@@ -5,8 +5,15 @@ datos requeridos se encuentran en los archivos `tbl0.tsv`, `tbl1.tsv` y
 librerias de pandas para resolver las preguntas.
 """
 
+import pandas as pd
+import os
 
 def pregunta_01():
+    base_path = os.path.dirname(os.path.dirname(__file__))
+    path = os.path.join(base_path, "files", "input", "tbl0.tsv")
+    df = pd.read_csv(path, sep="\t")
+    return df.shape[0]
+
     """
     ¿Cuál es la cantidad de filas en la tabla `tbl0.tsv`?
 

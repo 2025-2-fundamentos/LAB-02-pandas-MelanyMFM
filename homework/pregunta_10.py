@@ -7,6 +7,17 @@ librerias de pandas para resolver las preguntas.
 
 
 def pregunta_10():
+
+    import pandas as pd
+    import os
+
+    base_path = os.path.dirname(os.path.dirname(__file__))
+    path = os.path.join(base_path, "files", "input", "tbl0.tsv")
+    df = pd.read_csv(path, sep="\t")
+    df_sorted = df.sort_values(["c1", "c2"])
+    result = df_sorted.groupby("c1")["c2"].apply(lambda x: ":".join(str(i) for i in x)).to_frame()
+    return result
+
     """
     Construya una tabla que contenga `c1` y una lista separada por ':' de los
     valores de la columna `c2` para el archivo `tbl0.tsv`.

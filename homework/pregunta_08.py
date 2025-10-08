@@ -6,7 +6,16 @@ librerias de pandas para resolver las preguntas.
 """
 
 
+import pandas as pd
+import os
+
 def pregunta_08():
+    base_path = os.path.dirname(os.path.dirname(__file__))
+    path = os.path.join(base_path, "files", "input", "tbl0.tsv")
+    df = pd.read_csv(path, sep="\t")
+    df["suma"] = df["c0"] + df["c2"]
+    return df
+
     """
     Agregue una columna llamada `suma` con la suma de `c0` y `c2` al
     data frame que contiene el archivo `tbl0.tsv`.
